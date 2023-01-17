@@ -9,14 +9,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
     {
         public Form1()
         {
+
+
             InitializeComponent();
+
         }
+
+        private static void CreateCommand(string queryString, string connectionString)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                SqlDataReader dataReader;
+                command.Connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -31,10 +47,11 @@ namespace WindowsFormsApp2
         private void button1_Click(object sender, EventArgs e)
         {
             string connetionString;
-            SqlConnection cnn;
+            //SqlConnection cnn;
+            connection command123;
             connetionString = @"Data Source=127.0.0.1;Initial Catalog=Demodb;User ID=sa;Password=asdfghjkl";
-            cnn = new SqlConnection(connetionString);
-            cnn.Open();
+            //cnn = new SqlConnection(connetionString);
+            //cnn.Open();
 
             SqlCommand command;
             SqlDataReader dataReader;
@@ -42,22 +59,29 @@ namespace WindowsFormsApp2
 
             sql = "Select TutorialID, TutorialName from demotb";
 
-            command = new SqlCommand(sql, cnn);
+            //command = new SqlCommand(sql, cnn);
 
-            dataReader = command.ExecuteReader();
+            command123 = new connection();
+
+            //command123.CConnection();
+
+            //command123.CCommand(sql);
+
+            //CreateCommand(sql, connetionString);
+
 
             //adaptor.DeleteCommand = new NpgsqlCommand(sql, cnn);
             //adaptor.DeleteCommand.ExecuteNonQuery();
 
-            while (dataReader.Read())
-            {
-                Output = Output + dataReader.GetValue(0) + " - " + dataReader.GetValue(1) + "\n";
-            }
+            //while (dataReader.Read())
+            //{
+            //    Output = Output + dataReader.GetValue(0) + " - " + dataReader.GetValue(1) + "\n";
+            //}
 
-            MessageBox.Show(Output);
-            dataReader.Close();
-            command.Dispose();
-            cnn.Close();
+            MessageBox.Show(command123.Creading(sql));
+            //dataReader.Close();
+            //command.Dispose();
+            //cnn.Close();
 
         }
 
@@ -72,5 +96,63 @@ namespace WindowsFormsApp2
         {
 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+
+    public class connection 
+    {
+        string connetionString;
+        string sql;
+
+        public void CConnection()
+        {
+            SqlConnection cnn;
+
+            connetionString = @"Data Source=127.0.0.1;Initial Catalog=Demodb;User ID=sa;Password=asdfghjkl";
+            //sql = "Select TutorialID, TutorialName from demotb";
+            cnn = new SqlConnection(connetionString);
+
+        }
+
+        public void CCommand(string sql)
+        {
+            SqlCommand cnn = new SqlCommand(sql);
+        }
+
+        public string Creading(string sql)
+        {
+            SqlDataReader dataReader;
+            SqlCommand command;
+         
+
+            command = new SqlCommand(sql);
+
+            string Output = "";
+
+            dataReader = command.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                Output = Output + dataReader.GetValue(0) + " - " + dataReader.GetValue(1) + "\n";
+            }
+
+            return  Output;
+        }
+
+
     }
 }
