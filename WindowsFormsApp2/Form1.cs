@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -22,15 +15,11 @@ namespace WindowsFormsApp2
 
         }
 
-        private static void CreateCommand(string queryString, string connectionString)
+        public static SqlConnection getConnection()  //Creating a sqlConnection method
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand command = new SqlCommand(queryString, connection);
-                SqlDataReader dataReader;
-                command.Connection.Open();
-                command.ExecuteNonQuery();
-            }
+            string conn = "Data Source=127.0.0.1;Initial Catalog=Demodb;User ID=sa;Password=asdfghjkl";
+            SqlConnection myConn = new SqlConnection(conn);
+            return myConn;
         }
 
 
@@ -46,43 +35,27 @@ namespace WindowsFormsApp2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string connetionString;
-            //SqlConnection cnn;
-            connection command123;
-            connetionString = @"Data Source=127.0.0.1;Initial Catalog=Demodb;User ID=sa;Password=asdfghjkl";
-            //cnn = new SqlConnection(connetionString);
-            //cnn.Open();
-
+            
+            SqlConnection cnn;
             SqlCommand command;
-            SqlDataReader dataReader;
-            String sql, Output = "";
+            SqlDataReader dataReader;  
+            string sql, Output = "";
 
+            cnn = getConnection(); 
             sql = "Select TutorialID, TutorialName from demotb";
+            
 
-            //command = new SqlCommand(sql, cnn);
-
-            command123 = new connection();
-
-            //command123.CConnection();
-
-            //command123.CCommand(sql);
-
-            //CreateCommand(sql, connetionString);
-
-
-            //adaptor.DeleteCommand = new NpgsqlCommand(sql, cnn);
-            //adaptor.DeleteCommand.ExecuteNonQuery();
-
-            //while (dataReader.Read())
-            //{
-            //    Output = Output + dataReader.GetValue(0) + " - " + dataReader.GetValue(1) + "\n";
-            //}
-
-            MessageBox.Show(command123.Creading(sql));
-            //dataReader.Close();
-            //command.Dispose();
-            //cnn.Close();
-
+            using (command = new SqlCommand(sql, cnn)) 
+            {
+                cnn.Open();
+                dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    Output = Output + dataReader.GetValue(0) + " - " + dataReader.GetValue(1) + "\n";
+                }
+                MessageBox.Show(Output);
+                dataReader.Close();
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -111,48 +84,5 @@ namespace WindowsFormsApp2
         {
 
         }
-    }
-
-    public class connection 
-    {
-        string connetionString;
-        string sql;
-
-        public void CConnection()
-        {
-            SqlConnection cnn;
-
-            connetionString = @"Data Source=127.0.0.1;Initial Catalog=Demodb;User ID=sa;Password=asdfghjkl";
-            //sql = "Select TutorialID, TutorialName from demotb";
-            cnn = new SqlConnection(connetionString);
-
-        }
-
-        public void CCommand(string sql)
-        {
-            SqlCommand cnn = new SqlCommand(sql);
-        }
-
-        public string Creading(string sql)
-        {
-            SqlDataReader dataReader;
-            SqlCommand command;
-         
-
-            command = new SqlCommand(sql);
-
-            string Output = "";
-
-            dataReader = command.ExecuteReader();
-
-            while (dataReader.Read())
-            {
-                Output = Output + dataReader.GetValue(0) + " - " + dataReader.GetValue(1) + "\n";
-            }
-
-            return  Output;
-        }
-
-
     }
 }
