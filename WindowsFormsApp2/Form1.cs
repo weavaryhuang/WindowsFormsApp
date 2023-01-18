@@ -41,18 +41,20 @@ namespace WindowsFormsApp2
             SqlDataReader dataReader;  
             string sql, Output = "";
 
-            cnn = getConnection(); 
-            sql = "Select TutorialID, TutorialName from demotb";
+            cnn = getConnection(); // adding connection
+            sql = "Select TutorialID, TutorialName from demotb"; //SQL command
             
 
             using (command = new SqlCommand(sql, cnn)) 
             {
                 cnn.Open();
-                dataReader = command.ExecuteReader();
+                dataReader = command.ExecuteReader(); //Make table can be readable
+
                 while (dataReader.Read())
                 {
-                    Output = Output + dataReader.GetValue(0) + " - " + dataReader.GetValue(1) + "\n";
+                    Output = Output + dataReader.GetValue(0) + " - " + dataReader.GetValue(1) + "\n"; //Read table
                 }
+
                 MessageBox.Show(Output);
                 dataReader.Close();
             }
@@ -77,12 +79,64 @@ namespace WindowsFormsApp2
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
+            SqlConnection cnn;
+            SqlDataAdapter adaptor = new SqlDataAdapter();
+            string sql;
 
+            cnn = getConnection(); // adding connection
+            sql = "Delete demotb where TutorialID=3"; //SQL command
+
+
+            using (adaptor.DeleteCommand = new SqlCommand(sql, cnn))
+            {
+                cnn.Open();
+
+                adaptor.DeleteCommand.ExecuteNonQuery();
+                adaptor.Dispose();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            SqlConnection cnn;
+            SqlDataAdapter adaptor = new SqlDataAdapter();
+            string sql;
+
+            cnn = getConnection(); // adding connection
+            sql = "Insert into demotb (TutorialID,TutorialName) values(3,'" + "VB.Net" + "')"; //SQL command
+
+
+            using (adaptor.InsertCommand = new SqlCommand(sql, cnn))
+            {
+                cnn.Open();
+
+                adaptor.InsertCommand.ExecuteNonQuery();
+                adaptor.Dispose();
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            SqlConnection cnn;
+            SqlDataAdapter adaptor = new SqlDataAdapter();
+            string sql;
+
+            cnn = getConnection(); // adding connection
+            sql = "Update demotb set TutorialName='"+"VB.Net Complete"+"' where TutorialID = 3"; //SQL command
+
+
+            using (adaptor.UpdateCommand = new SqlCommand(sql, cnn))
+            {
+                cnn.Open();
+
+                adaptor.UpdateCommand.ExecuteNonQuery();
+                adaptor.Dispose();
+            }
         }
     }
 }
