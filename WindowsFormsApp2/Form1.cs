@@ -33,6 +33,24 @@ namespace WindowsFormsApp2
 
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null)
+            {
+                string theText = textBox.Text;
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null)
+            {
+                string theText = textBox.Text;
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             
@@ -40,10 +58,13 @@ namespace WindowsFormsApp2
             SqlCommand command;
             SqlDataReader dataReader;  
             string sql, Output = "";
+            string textC1 = textBox1.Text;
+            string textC2 = textBox2.Text;
+
+            //MessageBox.Show(textB1 + textB2);
 
             cnn = getConnection(); // adding connection
             sql = "Select TutorialID, TutorialName from demotb"; //SQL command
-            
 
             using (command = new SqlCommand(sql, cnn)) 
             {
@@ -62,6 +83,7 @@ namespace WindowsFormsApp2
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             // TODO: This line of code loads data into the 'demodbDataSet.demotb' table. You can move, or remove it, as needed.
             this.demotbTableAdapter.Fill(this.demodbDataSet.demotb);
 
@@ -72,28 +94,10 @@ namespace WindowsFormsApp2
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
-            SqlConnection cnn;
-            SqlDataAdapter adaptor = new SqlDataAdapter();
-            string sql;
-
-            cnn = getConnection(); // adding connection
-            sql = "Delete demotb where TutorialID=3"; //SQL command
-
-
-            using (adaptor.DeleteCommand = new SqlCommand(sql, cnn))
-            {
-                cnn.Open();
-
-                adaptor.DeleteCommand.ExecuteNonQuery();
-                adaptor.Dispose();
-            }
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -103,13 +107,40 @@ namespace WindowsFormsApp2
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
             SqlConnection cnn;
             SqlDataAdapter adaptor = new SqlDataAdapter();
             string sql;
+            string textC1 = textBox1.Text;
+            string textC2 = textBox2.Text;
 
             cnn = getConnection(); // adding connection
-            sql = "Insert into demotb (TutorialID,TutorialName) values(3,'" + "VB.Net" + "')"; //SQL command
+            sql = "Update demotb set TutorialName='"+"VB.Net Complete"+$"' where TutorialID ={textC1}"; //SQL update command
 
+
+            using (adaptor.UpdateCommand = new SqlCommand(sql, cnn))
+            {
+                cnn.Open();
+
+                adaptor.UpdateCommand.ExecuteNonQuery();
+                adaptor.Dispose();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SqlConnection cnn;
+            SqlDataAdapter adaptor = new SqlDataAdapter();
+            string sql = null;
+            string textC1 = textBox1.Text;
+            string textC2 = textBox2.Text;
+
+            cnn = getConnection(); // adding connection
+            sql = $"Insert into demotb (TutorialID,TutorialName) values({textC1}, '{textC2}')"; //SQL insert command VB.Net
 
             using (adaptor.InsertCommand = new SqlCommand(sql, cnn))
             {
@@ -120,21 +151,22 @@ namespace WindowsFormsApp2
             }
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
             SqlConnection cnn;
             SqlDataAdapter adaptor = new SqlDataAdapter();
             string sql;
+            string textC1 = textBox1.Text;
 
             cnn = getConnection(); // adding connection
-            sql = "Update demotb set TutorialName='"+"VB.Net Complete"+"' where TutorialID = 3"; //SQL command
+            sql = $"Delete demotb where TutorialID={textC1}"; //SQL delete command
 
 
-            using (adaptor.UpdateCommand = new SqlCommand(sql, cnn))
+            using (adaptor.DeleteCommand = new SqlCommand(sql, cnn))
             {
                 cnn.Open();
 
-                adaptor.UpdateCommand.ExecuteNonQuery();
+                adaptor.DeleteCommand.ExecuteNonQuery();
                 adaptor.Dispose();
             }
         }
