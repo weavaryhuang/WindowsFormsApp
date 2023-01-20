@@ -68,15 +68,18 @@ namespace WindowsFormsApp2
 
         private void button_showResult(object sender, EventArgs e)
         {
-            
+
             SqlConnection cnn;
             SqlCommand command;
-            SqlDataReader dataReader;  
-            string sql, Output = "";
-          
+            SqlCommand commandOrder;
+            SqlDataReader dataReader;
+            string sql;
+            string Output = "";
+
 
             cnn = getConnection(); // adding connection
-            sql = "Select UserID, UserBasicInfo, UserStatus, UserTime, UserContent from demotb"; //SQL command
+            sql = "SELECT * FROM demotb Order by UserID " +
+                 "Select UserID, UserBasicInfo, UserStatus, UserTime, UserContent from demotb"; //SQL command
 
             using (command = new SqlCommand(sql, cnn)) 
             {
@@ -165,6 +168,11 @@ namespace WindowsFormsApp2
 
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }
