@@ -279,9 +279,15 @@ namespace WindowsFormsApp {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class demotbDataTable : global::System.Data.TypedTableBase<demotbRow> {
             
-            private global::System.Data.DataColumn columnTutorialID;
+            private global::System.Data.DataColumn columnUserID;
             
-            private global::System.Data.DataColumn columnTutorialName;
+            private global::System.Data.DataColumn columnUserBasicInfo;
+            
+            private global::System.Data.DataColumn columnUserStatus;
+            
+            private global::System.Data.DataColumn columnUserTime;
+            
+            private global::System.Data.DataColumn columnUserContent;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -318,17 +324,41 @@ namespace WindowsFormsApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TutorialIDColumn {
+            public global::System.Data.DataColumn UserIDColumn {
                 get {
-                    return this.columnTutorialID;
+                    return this.columnUserID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TutorialNameColumn {
+            public global::System.Data.DataColumn UserBasicInfoColumn {
                 get {
-                    return this.columnTutorialName;
+                    return this.columnUserBasicInfo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn UserStatusColumn {
+                get {
+                    return this.columnUserStatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn UserTimeColumn {
+                get {
+                    return this.columnUserTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn UserContentColumn {
+                get {
+                    return this.columnUserContent;
                 }
             }
             
@@ -369,11 +399,14 @@ namespace WindowsFormsApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public demotbRow AdddemotbRow(string TutorialID, string TutorialName) {
+            public demotbRow AdddemotbRow(int UserID, string UserBasicInfo, string UserStatus, string UserTime, string UserContent) {
                 demotbRow rowdemotbRow = ((demotbRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        TutorialID,
-                        TutorialName};
+                        UserID,
+                        UserBasicInfo,
+                        UserStatus,
+                        UserTime,
+                        UserContent};
                 rowdemotbRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdemotbRow);
                 return rowdemotbRow;
@@ -396,19 +429,30 @@ namespace WindowsFormsApp {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnTutorialID = base.Columns["TutorialID"];
-                this.columnTutorialName = base.Columns["TutorialName"];
+                this.columnUserID = base.Columns["UserID"];
+                this.columnUserBasicInfo = base.Columns["UserBasicInfo"];
+                this.columnUserStatus = base.Columns["UserStatus"];
+                this.columnUserTime = base.Columns["UserTime"];
+                this.columnUserContent = base.Columns["UserContent"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnTutorialID = new global::System.Data.DataColumn("TutorialID", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTutorialID);
-                this.columnTutorialName = new global::System.Data.DataColumn("TutorialName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTutorialName);
-                this.columnTutorialID.MaxLength = 3;
-                this.columnTutorialName.MaxLength = 20;
+                this.columnUserID = new global::System.Data.DataColumn("UserID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUserID);
+                this.columnUserBasicInfo = new global::System.Data.DataColumn("UserBasicInfo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUserBasicInfo);
+                this.columnUserStatus = new global::System.Data.DataColumn("UserStatus", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUserStatus);
+                this.columnUserTime = new global::System.Data.DataColumn("UserTime", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUserTime);
+                this.columnUserContent = new global::System.Data.DataColumn("UserContent", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUserContent);
+                this.columnUserBasicInfo.MaxLength = 30;
+                this.columnUserStatus.MaxLength = 30;
+                this.columnUserTime.MaxLength = 30;
+                this.columnUserContent.MaxLength = 200;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -551,58 +595,142 @@ namespace WindowsFormsApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string TutorialID {
+            public int UserID {
                 get {
                     try {
-                        return ((string)(this[this.tabledemotb.TutorialIDColumn]));
+                        return ((int)(this[this.tabledemotb.UserIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TutorialID\' in table \'demotb\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'UserID\' in table \'demotb\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabledemotb.TutorialIDColumn] = value;
+                    this[this.tabledemotb.UserIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string TutorialName {
+            public string UserBasicInfo {
                 get {
                     try {
-                        return ((string)(this[this.tabledemotb.TutorialNameColumn]));
+                        return ((string)(this[this.tabledemotb.UserBasicInfoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TutorialName\' in table \'demotb\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'UserBasicInfo\' in table \'demotb\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabledemotb.TutorialNameColumn] = value;
+                    this[this.tabledemotb.UserBasicInfoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsTutorialIDNull() {
-                return this.IsNull(this.tabledemotb.TutorialIDColumn);
+            public string UserStatus {
+                get {
+                    try {
+                        return ((string)(this[this.tabledemotb.UserStatusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UserStatus\' in table \'demotb\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledemotb.UserStatusColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetTutorialIDNull() {
-                this[this.tabledemotb.TutorialIDColumn] = global::System.Convert.DBNull;
+            public string UserTime {
+                get {
+                    try {
+                        return ((string)(this[this.tabledemotb.UserTimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UserTime\' in table \'demotb\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledemotb.UserTimeColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsTutorialNameNull() {
-                return this.IsNull(this.tabledemotb.TutorialNameColumn);
+            public string UserContent {
+                get {
+                    try {
+                        return ((string)(this[this.tabledemotb.UserContentColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UserContent\' in table \'demotb\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledemotb.UserContentColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetTutorialNameNull() {
-                this[this.tabledemotb.TutorialNameColumn] = global::System.Convert.DBNull;
+            public bool IsUserIDNull() {
+                return this.IsNull(this.tabledemotb.UserIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetUserIDNull() {
+                this[this.tabledemotb.UserIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsUserBasicInfoNull() {
+                return this.IsNull(this.tabledemotb.UserBasicInfoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetUserBasicInfoNull() {
+                this[this.tabledemotb.UserBasicInfoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsUserStatusNull() {
+                return this.IsNull(this.tabledemotb.UserStatusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetUserStatusNull() {
+                this[this.tabledemotb.UserStatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsUserTimeNull() {
+                return this.IsNull(this.tabledemotb.UserTimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetUserTimeNull() {
+                this[this.tabledemotb.UserTimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsUserContentNull() {
+                return this.IsNull(this.tabledemotb.UserContentColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetUserContentNull() {
+                this[this.tabledemotb.UserContentColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -765,16 +893,23 @@ namespace WindowsFormsApp.DemodbDataSetTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "demotb";
-            tableMapping.ColumnMappings.Add("TutorialID", "TutorialID");
-            tableMapping.ColumnMappings.Add("TutorialName", "TutorialName");
+            tableMapping.ColumnMappings.Add("UserID", "UserID");
+            tableMapping.ColumnMappings.Add("UserBasicInfo", "UserBasicInfo");
+            tableMapping.ColumnMappings.Add("UserStatus", "UserStatus");
+            tableMapping.ColumnMappings.Add("UserTime", "UserTime");
+            tableMapping.ColumnMappings.Add("UserContent", "UserContent");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[demotb] ([TutorialID], [TutorialName]) VALUES (@TutorialID, @T" +
-                "utorialName)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[demotb] ([UserID], [UserBasicInfo], [UserStatus], [UserTime], " +
+                "[UserContent]) VALUES (@UserID, @UserBasicInfo, @UserStatus, @UserTime, @UserCon" +
+                "tent)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TutorialID", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TutorialID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TutorialName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TutorialName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserBasicInfo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserBasicInfo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserStatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserStatus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserTime", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserContent", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserContent", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -790,7 +925,7 @@ namespace WindowsFormsApp.DemodbDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT TutorialID, TutorialName FROM dbo.demotb";
+            this._commandCollection[0].CommandText = "SELECT UserID, UserBasicInfo, UserStatus, UserTime, UserContent FROM dbo.demotb";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -851,18 +986,36 @@ namespace WindowsFormsApp.DemodbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string TutorialID, string TutorialName) {
-            if ((TutorialID == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+        public virtual int Insert(global::System.Nullable<int> UserID, string UserBasicInfo, string UserStatus, string UserTime, string UserContent) {
+            if ((UserID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(UserID.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(TutorialID));
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((TutorialName == null)) {
+            if ((UserBasicInfo == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(TutorialName));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(UserBasicInfo));
+            }
+            if ((UserStatus == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(UserStatus));
+            }
+            if ((UserTime == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(UserTime));
+            }
+            if ((UserContent == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(UserContent));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 

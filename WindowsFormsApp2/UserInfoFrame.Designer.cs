@@ -32,7 +32,7 @@
             this.Usergroup = new System.Windows.Forms.GroupBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.demotbBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.demodbDataSet1 = new WindowsFormsApp.DemodbDataSet1();
+            this.demodbDataSet = new WindowsFormsApp.DemodbDataSet();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,11 +48,11 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.demotbTableAdapter1 = new WindowsFormsApp.DemodbDataSet1TableAdapters.demotbTableAdapter();
+            this.demotbTableAdapter1 = new WindowsFormsApp.DemodbDataSetTableAdapters.demotbTableAdapter();
             this.button5 = new System.Windows.Forms.Button();
             this.Usergroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.demotbBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.demodbDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.demodbDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // Usergroup
@@ -87,12 +87,12 @@
             // demotbBindingSource
             // 
             this.demotbBindingSource.DataMember = "demotb";
-            this.demotbBindingSource.DataSource = this.demodbDataSet1;
+            this.demotbBindingSource.DataSource = this.demodbDataSet;
             // 
-            // demodbDataSet1
+            // demodbDataSet
             // 
-            this.demodbDataSet1.DataSetName = "DemodbDataSet1";
-            this.demodbDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.demodbDataSet.DataSetName = "DemodbDataSet";
+            this.demodbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // textBox4
             // 
@@ -232,11 +232,11 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(521, 346);
+            this.button5.Location = new System.Drawing.Point(521, 312);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(57, 33);
             this.button5.TabIndex = 7;
-            this.button5.Text = "Info";
+            this.button5.Text = "Back";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -257,7 +257,7 @@
             this.Usergroup.ResumeLayout(false);
             this.Usergroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.demotbBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.demodbDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.demodbDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -281,9 +281,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private DemodbDataSet1 demodbDataSet1;
+        private DemodbDataSet demodbDataSet;
         private System.Windows.Forms.BindingSource demotbBindingSource;
-        private DemodbDataSet1TableAdapters.demotbTableAdapter demotbTableAdapter1;
+        private DemodbDataSetTableAdapters.demotbTableAdapter demotbTableAdapter1;
         private System.Windows.Forms.Button button5;
     }
 }

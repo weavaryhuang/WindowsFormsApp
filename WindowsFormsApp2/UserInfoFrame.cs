@@ -33,7 +33,7 @@ namespace WindowsFormsApp
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'demodbDataSet1.demotb' table. You can move, or remove it, as needed.
-            this.demotbTableAdapter1.Fill(this.demodbDataSet1.demotb);
+            this.demotbTableAdapter1.Fill(this.demodbDataSet.demotb);
 
 
         }
@@ -68,7 +68,7 @@ namespace WindowsFormsApp
 
         }
 
-        private void button_showResult(object sender, EventArgs e)
+        public void button_showResult(object sender, EventArgs e)
         {
 
             SqlConnection cnn;
@@ -171,7 +171,7 @@ namespace WindowsFormsApp
 
         private void button5_Click(object sender, EventArgs e)
         {
-            new Country().Show();  
+            this.Close();
         }
     }
 }
