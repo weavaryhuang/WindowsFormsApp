@@ -4,7 +4,7 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DemodbConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DemodbConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WindowsFormsApp2.Properties.Settings.GlobalReference.Default.DemodbConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DemodbConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DemodbConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WindowsFormsApp.Properties.Settings.GlobalReference.Default.DemodbConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="demotbTableAdapter" GeneratorDataComponentClassName="demotbTableAdapter" Name="demotb" UserDataComponentName="demotbTableAdapter">
@@ -38,20 +38,20 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="DemodbDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="DemodbDataSet" msprop:Generator_DataSetName="DemodbDataSet">
+  <xs:element name="DemodbDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DemodbDataSet" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DemodbDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="demotb" msprop:Generator_RowEvHandlerName="demotbRowChangeEventHandler" msprop:Generator_RowDeletedName="demotbRowDeleted" msprop:Generator_RowDeletingName="demotbRowDeleting" msprop:Generator_RowEvArgName="demotbRowChangeEvent" msprop:Generator_TablePropName="demotb" msprop:Generator_RowChangedName="demotbRowChanged" msprop:Generator_RowChangingName="demotbRowChanging" msprop:Generator_TableClassName="demotbDataTable" msprop:Generator_RowClassName="demotbRow" msprop:Generator_TableVarName="tabledemotb" msprop:Generator_UserTableName="demotb">
+        <xs:element name="demotb" msprop:Generator_RowEvHandlerName="demotbRowChangeEventHandler" msprop:Generator_RowDeletedName="demotbRowDeleted" msprop:Generator_RowDeletingName="demotbRowDeleting" msprop:Generator_RowEvArgName="demotbRowChangeEvent" msprop:Generator_TablePropName="demotb" msprop:Generator_RowChangedName="demotbRowChanged" msprop:Generator_UserTableName="demotb" msprop:Generator_RowChangingName="demotbRowChanging" msprop:Generator_RowClassName="demotbRow" msprop:Generator_TableClassName="demotbDataTable" msprop:Generator_TableVarName="tabledemotb">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="TutorialID" msprop:Generator_ColumnPropNameInRow="TutorialID" msprop:Generator_ColumnPropNameInTable="TutorialIDColumn" msprop:Generator_ColumnVarNameInTable="columnTutorialID" msprop:Generator_UserColumnName="TutorialID" minOccurs="0">
+              <xs:element name="TutorialID" msprop:Generator_ColumnPropNameInTable="TutorialIDColumn" msprop:Generator_ColumnPropNameInRow="TutorialID" msprop:Generator_UserColumnName="TutorialID" msprop:Generator_ColumnVarNameInTable="columnTutorialID" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="3" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="TutorialName" msprop:Generator_ColumnPropNameInRow="TutorialName" msprop:Generator_ColumnPropNameInTable="TutorialNameColumn" msprop:Generator_ColumnVarNameInTable="columnTutorialName" msprop:Generator_UserColumnName="TutorialName" minOccurs="0">
+              <xs:element name="TutorialName" msprop:Generator_ColumnPropNameInTable="TutorialNameColumn" msprop:Generator_ColumnPropNameInRow="TutorialName" msprop:Generator_UserColumnName="TutorialName" msprop:Generator_ColumnVarNameInTable="columnTutorialName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="20" />

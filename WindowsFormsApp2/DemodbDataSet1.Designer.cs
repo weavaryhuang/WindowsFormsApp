@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace WindowsFormsApp2 {
+namespace WindowsFormsApp {
     
     
     /// <summary>
@@ -769,7 +769,7 @@ namespace WindowsFormsApp2 {
         }
     }
 }
-namespace WindowsFormsApp2.DemodbDataSet1TableAdapters {
+namespace WindowsFormsApp.DemodbDataSet1TableAdapters {
     
     
     /// <summary>
@@ -916,7 +916,7 @@ namespace WindowsFormsApp2.DemodbDataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp2.Properties.Settings.Default.DemodbConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp.Properties.Settings.Default.DemodbConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

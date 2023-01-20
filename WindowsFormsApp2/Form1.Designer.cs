@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp2
+﻿namespace WindowsFormsApp
 {
     partial class UserInfoFrame
     {
@@ -32,7 +32,7 @@
             this.Usergroup = new System.Windows.Forms.GroupBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.demotbBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.demodbDataSet1 = new WindowsFormsApp2.DemodbDataSet1();
+            this.demodbDataSet1 = new WindowsFormsApp.DemodbDataSet1();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -43,12 +43,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.demotbTableAdapter = new WindowsFormsApp2.DemodbDataSetTableAdapters.demotbTableAdapter();
+            this.demotbTableAdapter = new WindowsFormsApp.DemodbDataSetTableAdapters.demotbTableAdapter();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.demotbTableAdapter1 = new WindowsFormsApp2.DemodbDataSet1TableAdapters.demotbTableAdapter();
+            this.demotbTableAdapter1 = new WindowsFormsApp.DemodbDataSet1TableAdapters.demotbTableAdapter();
+            this.button5 = new System.Windows.Forms.Button();
             this.Usergroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.demotbBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demodbDataSet1)).BeginInit();
@@ -178,7 +179,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(482, 287);
+            this.button1.Location = new System.Drawing.Point(482, 225);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(96, 63);
             this.button1.TabIndex = 1;
@@ -229,11 +230,22 @@
             // 
             this.demotbTableAdapter1.ClearBeforeFill = true;
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(521, 346);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(57, 33);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "Info";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // UserInfoFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(607, 391);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -272,6 +284,7 @@
         private DemodbDataSet1 demodbDataSet1;
         private System.Windows.Forms.BindingSource demotbBindingSource;
         private DemodbDataSet1TableAdapters.demotbTableAdapter demotbTableAdapter1;
+        private System.Windows.Forms.Button button5;
     }
 }
 

@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 
 
-namespace WindowsFormsApp2
+namespace WindowsFormsApp
 {
     public partial class UserInfoFrame : Form
     {
@@ -167,6 +167,11 @@ namespace WindowsFormsApp2
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            new Country().Show();  
         }
     }
 }
