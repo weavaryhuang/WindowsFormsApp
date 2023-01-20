@@ -7,6 +7,7 @@ namespace WindowsFormsApp2
 {
     public partial class UserInfoFrame : Form
     {
+
         public UserInfoFrame()
         {
             InitializeComponent();
@@ -46,6 +47,7 @@ namespace WindowsFormsApp2
             //}
         }
 
+
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             
@@ -71,7 +73,6 @@ namespace WindowsFormsApp2
 
             SqlConnection cnn;
             SqlCommand command;
-            SqlCommand commandOrder;
             SqlDataReader dataReader;
             string sql;
             string Output = "";
@@ -88,10 +89,12 @@ namespace WindowsFormsApp2
 
                 while (dataReader.Read())
                 {
-                    Output = Output + dataReader.GetValue(0) + " - " + dataReader.GetValue(1) + " - " +
+                    Output = Output + 
+                        dataReader.GetValue(0) + " - " + 
+                        dataReader.GetValue(1) + " - " +
                         dataReader.GetValue(2) + " - " + 
                         dataReader.GetValue(3) + " - " + 
-                        dataReader.GetValue(4) + "\n"; //Read table
+                        dataReader.GetValue(4) + "\n";      //Read table
                 }
 
                 MessageBox.Show(Output);
@@ -103,14 +106,10 @@ namespace WindowsFormsApp2
             SqlConnection cnn;
             SqlDataAdapter adaptor = new SqlDataAdapter();
             string sql = null;
-            string textC1 = textBox1.Text;
-            string textC2 = textBox2.Text;
-            string textC3 = textBox3.Text;
-            string textC4 = textBox4.Text;
-            string textC5 = textBox5.Text;
 
             cnn = getConnection(); // adding connection
-            sql = $"Insert into demotb (UserID,UserBasicInfo,UserStatus,UserTime,UserContent) values({textC1}, '{textC2}', '{textC3}', '{textC4}', '{textC5}')"; //SQL insert command VB.Net
+            sql = $"Insert into demotb (UserID,UserBasicInfo,UserStatus,UserTime,UserContent) " +
+                $"values({textBox1.Text}, '{textBox2.Text}', '{textBox3.Text}', '{textBox4.Text}', '{textBox5.Text}')"; //SQL insert command VB.Net
 
             using (adaptor.InsertCommand = new SqlCommand(sql, cnn))
             {
@@ -126,16 +125,10 @@ namespace WindowsFormsApp2
             SqlConnection cnn;
             SqlDataAdapter adaptor = new SqlDataAdapter();
             string sql;
-            string textC1 = textBox1.Text;
-            string textC2 = textBox2.Text;
-            string textC3 = textBox3.Text;
-            string textC4 = textBox4.Text;
-            string textC5 = textBox5.Text;
-
 
             cnn = getConnection(); // adding connection
-            sql = $"Update demotb set UserBasicInfo='{textC2}', UserStatus='{textC3}', " +
-                $"UserTime='{textC4}', UserContent='{textC5}' where UserID ={textC1}"; //SQL update command
+            sql = $"Update demotb set UserBasicInfo='{textBox2.Text}', UserStatus='{textBox3.Text}', " +
+                $"UserTime='{textBox4.Text}', UserContent='{textBox5.Text}' where UserID ={textBox1.Text}"; //SQL update command
 
 
             using (adaptor.UpdateCommand = new SqlCommand(sql, cnn))
@@ -151,10 +144,9 @@ namespace WindowsFormsApp2
             SqlConnection cnn;
             SqlDataAdapter adaptor = new SqlDataAdapter();
             string sql;
-            string textC1 = textBox1.Text;
 
             cnn = getConnection(); // adding connection
-            sql = $"Delete demotb where UserID={textC1}"; //SQL delete command
+            sql = $"Delete demotb where UserID={textBox1.Text}"; //SQL delete command
 
 
             using (adaptor.DeleteCommand = new SqlCommand(sql, cnn))
