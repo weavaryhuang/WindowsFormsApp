@@ -20,6 +20,38 @@ namespace WindowsFormsApp
             return myConn;
         }
 
+        public static string getShowlist()  //Creating a sqlConnection method
+        {
+            SqlConnection cnn;
+            SqlCommand command;
+            SqlDataReader dataReader;
+            string sql;
+            string Output = "";
+
+
+            cnn = getConnection(); // adding connection
+            sql = "SELECT * FROM demotb Order by UserID " +
+                 "Select UserID, UserBasicInfo, UserStatus, UserTime, UserContent from demotb"; //SQL command
+
+            using (command = new SqlCommand(sql, cnn))
+            {
+                cnn.Open();
+                dataReader = command.ExecuteReader(); //Make table can be readable
+
+                while (dataReader.Read())
+                {
+                    Output = Output +
+                        dataReader.GetValue(0) + "  -  " +
+                        dataReader.GetValue(1) + "  -  " +
+                        dataReader.GetValue(2) + "  -  " +
+                        dataReader.GetValue(3) + "  -  " +
+                        dataReader.GetValue(4) + "\n\n";      //Read table
+                }
+                dataReader.Close();
+                return Output;
+            }
+        }
+
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -68,39 +100,10 @@ namespace WindowsFormsApp
 
         }
 
-        public void button_showResult(object sender, EventArgs e)
-        {
 
-            SqlConnection cnn;
-            SqlCommand command;
-            SqlDataReader dataReader;
-            string sql;
-            string Output = "";
+        private void button_showResult(object sender, EventArgs e) => MessageBox.Show(getShowlist()); // using method to show user list
 
 
-            cnn = getConnection(); // adding connection
-            sql = "SELECT * FROM demotb Order by UserID " +
-                 "Select UserID, UserBasicInfo, UserStatus, UserTime, UserContent from demotb"; //SQL command
-
-            using (command = new SqlCommand(sql, cnn)) 
-            {
-                cnn.Open();
-                dataReader = command.ExecuteReader(); //Make table can be readable
-
-                while (dataReader.Read())
-                {
-                    Output = Output + 
-                        dataReader.GetValue(0) + " - " + 
-                        dataReader.GetValue(1) + " - " +
-                        dataReader.GetValue(2) + " - " + 
-                        dataReader.GetValue(3) + " - " + 
-                        dataReader.GetValue(4) + "\n";      //Read table
-                }
-
-                MessageBox.Show(Output);
-                dataReader.Close();
-            }
-        }
         private void button_insertValues(object sender, EventArgs e)
         {
             SqlConnection cnn;

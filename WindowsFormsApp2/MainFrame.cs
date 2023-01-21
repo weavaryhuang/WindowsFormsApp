@@ -23,6 +23,8 @@ namespace WindowsFormsApp
         }
         private void InitializeComponent()
         {
+            UserInfoFrame frameT = new UserInfoFrame();
+
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -53,11 +55,11 @@ namespace WindowsFormsApp
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("PMingLiU", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button3.Location = new System.Drawing.Point(141, 63);
+            this.button3.Location = new System.Drawing.Point(144, 63);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(234, 61);
             this.button3.TabIndex = 2;
-            this.button3.Text = "Check Users";
+            this.button3.Text = "Check Users List";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -91,35 +93,41 @@ namespace WindowsFormsApp
 
         private void button3_Click(object sender, EventArgs e)
         {
-            SqlConnection cnn;
-            SqlCommand command;
-            SqlDataReader dataReader;
-            string sql;
-            string Output = "";
+            //SqlConnection cnn;
+            //SqlCommand command;
+            //SqlDataReader dataReader;
+            //string sql;
+            //string Output = "";
 
 
-            cnn = UserInfoFrame.getConnection(); // adding connection
-            sql = "SELECT * FROM demotb Order by UserID " +
-                 "Select UserID, UserBasicInfo, UserStatus, UserTime, UserContent from demotb"; //SQL command
+            //cnn = UserInfoFrame.getConnection(); // adding connection
+            //sql = "SELECT * FROM demotb Order by UserID " +
+            //     "Select UserID, UserBasicInfo, UserStatus, UserTime, UserContent from demotb"; //SQL command
 
-            using (command = new SqlCommand(sql, cnn))
-            {
-                cnn.Open();
-                dataReader = command.ExecuteReader(); //Make table can be readable
+            //using (command = new SqlCommand(sql, cnn))
+            //{
+            //    cnn.Open();
+            //    dataReader = command.ExecuteReader(); //Make table can be readable
 
-                while (dataReader.Read())
-                {
-                    Output = Output +
-                        dataReader.GetValue(0) + " - " +
-                        dataReader.GetValue(1) + " - " +
-                        dataReader.GetValue(2) + " - " +
-                        dataReader.GetValue(3) + " - " +
-                        dataReader.GetValue(4) + "\n";      //Read table
-                }
+            //    while (dataReader.Read())
+            //    {
+            //        Output = Output +
+            //            dataReader.GetValue(0) + "  -  " +
+            //            dataReader.GetValue(1) + "  -  " +
+            //            dataReader.GetValue(2) + "  -  " +
+            //            dataReader.GetValue(3) + "  -  " +
+            //            dataReader.GetValue(4) + "\n\n";      //Read table
+            //    }
 
-                MessageBox.Show(Output);
-                dataReader.Close();
-            }
+            //    MessageBox.Show(Output);
+            //    dataReader.Close();
+            //}
+            MessageBox.Show(UserInfoFrame.getShowlist());
+        }
+
+        private void frameT_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
