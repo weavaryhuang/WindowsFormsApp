@@ -7,10 +7,13 @@ namespace WindowsFormsApp
 {
     public partial class UserInfoFrame : Form
     {
+        string timeNow = DateTime.Now.ToString("yyyy/MM/dd HH:mm");
 
         public UserInfoFrame()
         {
             InitializeComponent();
+
+            textBox4.Text = timeNow;
         }
 
         public static SqlConnection getConnection()  //Creating a sqlConnection method
@@ -112,12 +115,11 @@ namespace WindowsFormsApp
 
             cnn = getConnection(); // adding connection
             sql = $"Insert into demotb (UserID,UserBasicInfo,UserStatus,UserTime,UserContent) " +
-                $"values({textBox1.Text}, '{textBox2.Text}', '{textBox3.Text}', '{textBox4.Text}', '{textBox5.Text}')"; //SQL insert command VB.Net
+                $"values({textBox1.Text}, '{textBox2.Text}', '{textBox3.Text}', '{DateTime.Now.ToString(timeNow)}', '{textBox5.Text}')"; //SQL insert command VB.Net
 
             using (adaptor.InsertCommand = new SqlCommand(sql, cnn))
             {
                 cnn.Open();
-
                 adaptor.InsertCommand.ExecuteNonQuery();
                 adaptor.Dispose();
             }
@@ -131,7 +133,7 @@ namespace WindowsFormsApp
 
             cnn = getConnection(); // adding connection
             sql = $"Update demotb set UserBasicInfo='{textBox2.Text}', UserStatus='{textBox3.Text}', " +
-                $"UserTime='{textBox4.Text}', UserContent='{textBox5.Text}' where UserID ={textBox1.Text}"; //SQL update command
+                $"UserTime='{DateTime.Now.ToString(timeNow)}', UserContent='{textBox5.Text}' where UserID ={textBox1.Text}"; //SQL update command
 
 
             using (adaptor.UpdateCommand = new SqlCommand(sql, cnn))
@@ -175,6 +177,16 @@ namespace WindowsFormsApp
         private void button5_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

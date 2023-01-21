@@ -23,8 +23,6 @@ namespace WindowsFormsApp
         }
         private void InitializeComponent()
         {
-            UserInfoFrame frameT = new UserInfoFrame();
-
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -76,10 +74,7 @@ namespace WindowsFormsApp
 
         }
 
-        private void MainFrame_Load(object sender, EventArgs e)
-        {
-
-        }
+        private void MainFrame_Load(object sender, EventArgs e) { }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -91,39 +86,8 @@ namespace WindowsFormsApp
             this.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            //SqlConnection cnn;
-            //SqlCommand command;
-            //SqlDataReader dataReader;
-            //string sql;
-            //string Output = "";
+        private void button3_Click(object sender, EventArgs e) => MessageBox.Show(UserInfoFrame.getShowlist());
 
-
-            //cnn = UserInfoFrame.getConnection(); // adding connection
-            //sql = "SELECT * FROM demotb Order by UserID " +
-            //     "Select UserID, UserBasicInfo, UserStatus, UserTime, UserContent from demotb"; //SQL command
-
-            //using (command = new SqlCommand(sql, cnn))
-            //{
-            //    cnn.Open();
-            //    dataReader = command.ExecuteReader(); //Make table can be readable
-
-            //    while (dataReader.Read())
-            //    {
-            //        Output = Output +
-            //            dataReader.GetValue(0) + "  -  " +
-            //            dataReader.GetValue(1) + "  -  " +
-            //            dataReader.GetValue(2) + "  -  " +
-            //            dataReader.GetValue(3) + "  -  " +
-            //            dataReader.GetValue(4) + "\n\n";      //Read table
-            //    }
-
-            //    MessageBox.Show(Output);
-            //    dataReader.Close();
-            //}
-            MessageBox.Show(UserInfoFrame.getShowlist());
-        }
 
         private void frameT_Load(object sender, EventArgs e)
         {
