@@ -9,13 +9,11 @@ using System.Data.SqlClient;
 
 namespace WindowsFormsApp
 {
-    public partial class MainFrame : Form
+    public partial class MainFrame 
     {
         private Button button1;
-        int height = Screen.PrimaryScreen.Bounds.Height;
         private Button button2;
         private Button button3;
-        int width = Screen.PrimaryScreen.Bounds.Width;
 
         public MainFrame()
         {
@@ -73,6 +71,10 @@ namespace WindowsFormsApp
             this.ResumeLayout(false);
 
         }
+    }
+    public partial class MainFrame : Form
+    {
+        
 
         private void MainFrame_Load(object sender, EventArgs e) { }
 
