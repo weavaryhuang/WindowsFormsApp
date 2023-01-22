@@ -7,13 +7,12 @@ namespace WindowsFormsApp
 {
     public partial class UserInfoFrame : Form
     {
-        string timeNow = DateTime.Now.ToString("yyyy/MM/dd HH:mm");
+        string timeS = "yyyy/MM/dd HH:mm:ss";
 
         public UserInfoFrame()
         {
             InitializeComponent();
 
-            textBox4.Text = timeNow;
         }
 
         public static SqlConnection getConnection()  //Creating a sqlConnection method
@@ -113,7 +112,7 @@ namespace WindowsFormsApp
 
             cnn = getConnection(); // adding connection
             sql = $"Insert into demotb (UserID,UserBasicInfo,UserStatus,UserTime,UserContent) " +
-                $"values({textBox1.Text}, '{textBox2.Text}', '{textBox3.Text}', '{DateTime.Now.ToString(timeNow)}', '{textBox5.Text}')"; //SQL insert command VB.Net
+                $"values({textBox1.Text}, '{textBox2.Text}', '{textBox3.Text}', '{DateTime.Now.ToString(timeS)}', '{textBox5.Text}')"; //SQL insert command VB.Net
 
             
 
@@ -141,7 +140,7 @@ namespace WindowsFormsApp
 
             cnn = getConnection(); // adding connection
             sql = $"Update demotb set UserBasicInfo='{textBox2.Text}', UserStatus='{textBox3.Text}', " +
-                $"UserTime='{DateTime.Now.ToString(timeNow)}', UserContent='{textBox5.Text}' where UserID ={textBox1.Text}"; //SQL update command
+                $"UserTime='{DateTime.Now.ToString(timeS)}', UserContent='{textBox5.Text}' where UserID ={textBox1.Text}"; //SQL update command
 
             try 
             {
