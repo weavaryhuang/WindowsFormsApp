@@ -23,38 +23,6 @@ namespace WindowsFormsApp
             return myConn;
         }
 
-        public static string getShowlist()  //Creating a sqlConnection method
-        {
-            SqlConnection cnn;
-            SqlCommand command;
-            SqlDataReader dataReader;
-            string sql;
-            string Output = "";
-
-
-            cnn = getConnection(); // adding connection
-            sql = "SELECT * FROM demotb Order by UserID " +
-                 "Select UserID, UserBasicInfo, UserStatus, UserTime, UserContent from demotb"; //SQL command
-
-            using (command = new SqlCommand(sql, cnn))
-            {
-                cnn.Open();
-                dataReader = command.ExecuteReader(); //Make table can be readable
-
-                while (dataReader.Read())
-                {
-                    Output = Output +
-                        dataReader.GetValue(0) + "  -  " +
-                        dataReader.GetValue(1) + "  -  " +
-                        dataReader.GetValue(2) + "  -  " +
-                        dataReader.GetValue(3) + "  -  " +
-                        dataReader.GetValue(4) + "\n\n";      //Read table
-                }
-                dataReader.Close();
-                return Output;
-            }
-        }
-
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -103,9 +71,39 @@ namespace WindowsFormsApp
 
         }
 
+        public static string getShowlist()  //Creating a sqlConnection method
+        {
+            SqlConnection cnn;
+            SqlCommand command;
+            SqlDataReader dataReader;
+            string sql;
+            string Output = "";
+
+
+            cnn = getConnection(); // adding connection
+            sql = "SELECT * FROM demotb Order by UserID " +
+                 "Select UserID, UserBasicInfo, UserStatus, UserTime, UserContent from demotb"; //SQL command
+
+            using (command = new SqlCommand(sql, cnn))
+            {
+                cnn.Open();
+                dataReader = command.ExecuteReader(); //Make table can be readable
+
+                while (dataReader.Read())
+                {
+                    Output = Output +
+                        dataReader.GetValue(0) + "  -  " +
+                        dataReader.GetValue(1) + "  -  " +
+                        dataReader.GetValue(2) + "  -  " +
+                        dataReader.GetValue(3) + "  -  " +
+                        dataReader.GetValue(4) + "\n\n";      //Read table
+                }
+                dataReader.Close();
+                return Output;
+            }
+        }
 
         private void button_showResult(object sender, EventArgs e) => MessageBox.Show(getShowlist()); // using method to show user list
-
 
         private void button_insertValues(object sender, EventArgs e)
         {
@@ -117,11 +115,21 @@ namespace WindowsFormsApp
             sql = $"Insert into demotb (UserID,UserBasicInfo,UserStatus,UserTime,UserContent) " +
                 $"values({textBox1.Text}, '{textBox2.Text}', '{textBox3.Text}', '{DateTime.Now.ToString(timeNow)}', '{textBox5.Text}')"; //SQL insert command VB.Net
 
-            using (adaptor.InsertCommand = new SqlCommand(sql, cnn))
+            
+
+
+            //MessageBox.Show("Some text", "Some title", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            try {
+                using (adaptor.InsertCommand = new SqlCommand(sql, cnn))
+                {
+                    cnn.Open();
+                    adaptor.InsertCommand.ExecuteNonQuery();
+                    adaptor.Dispose();
+                }
+            }
+            catch (Exception ex)
             {
-                cnn.Open();
-                adaptor.InsertCommand.ExecuteNonQuery();
-                adaptor.Dispose();
+                MessageBox.Show("Wrong using syntax, please delete the char( ' )\n or adding double char( ' ) instead in your sentence", "Wrong Input characters ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -135,14 +143,23 @@ namespace WindowsFormsApp
             sql = $"Update demotb set UserBasicInfo='{textBox2.Text}', UserStatus='{textBox3.Text}', " +
                 $"UserTime='{DateTime.Now.ToString(timeNow)}', UserContent='{textBox5.Text}' where UserID ={textBox1.Text}"; //SQL update command
 
-
-            using (adaptor.UpdateCommand = new SqlCommand(sql, cnn))
+            try 
             {
-                cnn.Open();
+                using (adaptor.UpdateCommand = new SqlCommand(sql, cnn))
+                {
+                    cnn.Open();
 
-                adaptor.UpdateCommand.ExecuteNonQuery();
-                adaptor.Dispose();
+                    adaptor.UpdateCommand.ExecuteNonQuery();
+                    adaptor.Dispose();
+                    MessageBox.Show("Success", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please check SQL syntax", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
         private void button4_deletValues(object sender, EventArgs e)
         {
@@ -153,13 +170,19 @@ namespace WindowsFormsApp
             cnn = getConnection(); // adding connection
             sql = $"Delete demotb where UserID={textBox1.Text}"; //SQL delete command
 
-
-            using (adaptor.DeleteCommand = new SqlCommand(sql, cnn))
+            try
             {
-                cnn.Open();
+                using (adaptor.DeleteCommand = new SqlCommand(sql, cnn))
+                {
+                    cnn.Open();
 
-                adaptor.DeleteCommand.ExecuteNonQuery();
-                adaptor.Dispose();
+                    adaptor.DeleteCommand.ExecuteNonQuery();
+                    adaptor.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please check SQL syntax", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

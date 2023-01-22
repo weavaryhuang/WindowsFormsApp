@@ -83,8 +83,9 @@ namespace WindowsFormsApp
             // 
             this.textBox4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.demotbBindingSource, "UserTime", true));
             this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(204, 224);
+            this.textBox4.Location = new System.Drawing.Point(204, 193);
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(100, 22);
             this.textBox4.TabIndex = 11;
             this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged_1);
@@ -102,16 +103,17 @@ namespace WindowsFormsApp
             // textBox5
             // 
             this.textBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.demotbBindingSource, "UserContent", true));
-            this.textBox5.Location = new System.Drawing.Point(204, 272);
+            this.textBox5.Location = new System.Drawing.Point(204, 242);
+            this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(189, 22);
+            this.textBox5.Size = new System.Drawing.Size(189, 70);
             this.textBox5.TabIndex = 9;
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // textBox3
             // 
             this.textBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.demotbBindingSource, "UserStatus", true));
-            this.textBox3.Location = new System.Drawing.Point(204, 168);
+            this.textBox3.Location = new System.Drawing.Point(204, 145);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 22);
             this.textBox3.TabIndex = 7;
@@ -120,7 +122,7 @@ namespace WindowsFormsApp
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(26, 275);
+            this.label5.Location = new System.Drawing.Point(26, 242);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 12);
             this.label5.TabIndex = 6;
@@ -130,7 +132,7 @@ namespace WindowsFormsApp
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 224);
+            this.label4.Location = new System.Drawing.Point(26, 193);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 12);
             this.label4.TabIndex = 5;
@@ -139,7 +141,7 @@ namespace WindowsFormsApp
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 171);
+            this.label3.Location = new System.Drawing.Point(26, 148);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 12);
             this.label3.TabIndex = 4;
@@ -148,7 +150,7 @@ namespace WindowsFormsApp
             // textBox2
             // 
             this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.demotbBindingSource, "UserBasicInfo", true));
-            this.textBox2.Location = new System.Drawing.Point(204, 116);
+            this.textBox2.Location = new System.Drawing.Point(204, 93);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 22);
             this.textBox2.TabIndex = 3;
@@ -157,7 +159,7 @@ namespace WindowsFormsApp
             // textBox1
             // 
             this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.demotbBindingSource, "UserID", true));
-            this.textBox1.Location = new System.Drawing.Point(204, 60);
+            this.textBox1.Location = new System.Drawing.Point(204, 37);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 22);
             this.textBox1.TabIndex = 2;
@@ -166,7 +168,7 @@ namespace WindowsFormsApp
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 119);
+            this.label2.Location = new System.Drawing.Point(26, 96);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 12);
             this.label2.TabIndex = 1;
@@ -175,7 +177,7 @@ namespace WindowsFormsApp
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 63);
+            this.label1.Location = new System.Drawing.Point(26, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 12);
             this.label1.TabIndex = 0;
@@ -184,7 +186,7 @@ namespace WindowsFormsApp
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(482, 225);
+            this.button1.Location = new System.Drawing.Point(482, 230);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(96, 63);
             this.button1.TabIndex = 1;
@@ -208,7 +210,7 @@ namespace WindowsFormsApp
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(482, 180);
+            this.button3.Location = new System.Drawing.Point(482, 92);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(96, 28);
             this.button3.TabIndex = 5;
@@ -218,7 +220,7 @@ namespace WindowsFormsApp
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(482, 92);
+            this.button4.Location = new System.Drawing.Point(482, 184);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(96, 28);
             this.button4.TabIndex = 6;
