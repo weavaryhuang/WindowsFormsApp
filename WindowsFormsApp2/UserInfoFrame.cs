@@ -36,10 +36,12 @@ namespace WindowsFormsApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+
             // TODO: This line of code loads data into the 'demodbDataSet.demotb' table. You can move, or remove it, as needed.
             //this.demotbTableAdapter.Fill(this.demodbDataSet.demotb);
-      
+            this.textBox4.Text = DateTime.Now.ToString(timeString);
+
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -161,32 +163,18 @@ namespace WindowsFormsApp
         }
         private void button4_deletValues(object sender, EventArgs e)
         {
-            SqlConnection cnn;
-            SqlDataAdapter adaptor = new SqlDataAdapter();
-            string sql;
+            //SqlConnection cnn;
+            //SqlDataAdapter adaptor = new SqlDataAdapter();
+            //string sql;
 
-            DialogResult result = MessageBox.Show("Deleted", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+            DialogResult result = MessageBox.Show("Do you ant to delete User ID?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
             if (result == DialogResult.OK)
-            { 
-                cnn = getConnection(); // adding connection
-                sql = $"Delete demotb where UserID={textBox1.Text}"; //SQL delete command
-
-                try
-                {
-                    using (adaptor.DeleteCommand = new SqlCommand(sql, cnn))
-                    {
-                        cnn.Open();
-
-                        adaptor.DeleteCommand.ExecuteNonQuery();
-                        adaptor.Dispose();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Please check SQL syntax", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            {                
+                new DeleteFram().Show();         
             }
+
+            
         }
 
 

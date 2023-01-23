@@ -32,7 +32,6 @@ namespace WindowsFormsApp
         {
             this.components = new System.ComponentModel.Container();
             this.Usergroup = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.demotbBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.demodbDataSet = new WindowsFormsApp.DemodbDataSet();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -52,6 +51,7 @@ namespace WindowsFormsApp
             this.demotbTableAdapter1 = new WindowsFormsApp.DemodbDataSetTableAdapters.demotbTableAdapter();
             this.button5 = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.Usergroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.demotbBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demodbDataSet)).BeginInit();
@@ -77,17 +77,6 @@ namespace WindowsFormsApp
             this.Usergroup.TabStop = false;
             this.Usergroup.Text = "Usergroup";
             this.Usergroup.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // textBox4
-            // 
-            this.textBox4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.demotbBindingSource, "UserTime", true));
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(204, 193);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(100, 22);
-            this.textBox4.TabIndex = 11;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged_1);
             // 
             // demotbBindingSource
             // 
@@ -241,6 +230,16 @@ namespace WindowsFormsApp
             this.button5.Text = "Back";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // textBox4
+            // 
+            this.textBox4.Enabled = false;
+            this.textBox4.Location = new System.Drawing.Point(204, 193);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(100, 22);
+            this.textBox4.TabIndex = 11;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged_1);
             // 
             // UserInfoFrame
             // 
