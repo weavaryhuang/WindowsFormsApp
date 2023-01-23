@@ -49,7 +49,6 @@ namespace WindowsFormsApp
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.demotbTableAdapter1 = new WindowsFormsApp.DemodbDataSetTableAdapters.demotbTableAdapter();
             this.button5 = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -158,6 +157,7 @@ namespace WindowsFormsApp
             // 
             // textBox1
             // 
+            this.textBox1.AccessibleName = "";
             this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.demotbBindingSource, "UserID", true));
             this.textBox1.Location = new System.Drawing.Point(204, 37);
             this.textBox1.Name = "textBox1";
@@ -228,11 +228,6 @@ namespace WindowsFormsApp
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_deletValues);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
             // demotbTableAdapter1
             // 
             this.demotbTableAdapter1.ClearBeforeFill = true;
@@ -287,7 +282,6 @@ namespace WindowsFormsApp
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private DemodbDataSet demodbDataSet;
         private System.Windows.Forms.BindingSource demotbBindingSource;
         private DemodbDataSetTableAdapters.demotbTableAdapter demotbTableAdapter1;

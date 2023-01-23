@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows.Forms;
 
 
@@ -7,12 +8,13 @@ namespace WindowsFormsApp
 {
     public partial class UserInfoFrame : Form
     {
-        string timeS = "yyyy/MM/dd HH:mm:ss";
+        string timeString = "yy/MM/dd HH:mm:ss";
+        string timeStringNoformat = "yyMMddHHmmss";
+
 
         public UserInfoFrame()
         {
             InitializeComponent();
-
         }
 
         public static SqlConnection getConnection()  //Creating a sqlConnection method
@@ -34,18 +36,18 @@ namespace WindowsFormsApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'demodbDataSet1.demotb' table. You can move, or remove it, as needed.
-            this.demotbTableAdapter1.Fill(this.demodbDataSet.demotb);
-
-
+           
+            // TODO: This line of code loads data into the 'demodbDataSet.demotb' table. You can move, or remove it, as needed.
+            //this.demotbTableAdapter.Fill(this.demodbDataSet.demotb);
+      
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            //TextBox textBox = sender as TextBox;
-            //if (textBox != null)
+            //TextBox textBox1 = sender as TextBox;
+            //if (textBox1 != null)
             //{
-            //    string theText = textBox.Text;
+            //    string theText = textBox1.Text;
             //}
         }
 
@@ -80,7 +82,7 @@ namespace WindowsFormsApp
 
 
             cnn = getConnection(); // adding connection
-            sql = "SELECT * FROM demotb Order by UserID " +
+            sql = "SELECT * FROM demotb Order by UserTime DESC " +
                  "Select UserID, UserBasicInfo, UserStatus, UserTime, UserContent from demotb"; //SQL command
 
             using (command = new SqlCommand(sql, cnn))
@@ -112,10 +114,7 @@ namespace WindowsFormsApp
 
             cnn = getConnection(); // adding connection
             sql = $"Insert into demotb (UserID,UserBasicInfo,UserStatus,UserTime,UserContent) " +
-                $"values({textBox1.Text}, '{textBox2.Text}', '{textBox3.Text}', '{DateTime.Now.ToString(timeS)}', '{textBox5.Text}')"; //SQL insert command VB.Net
-
-            
-
+                $"values({textBox1.Text}, '{textBox2.Text}', '{textBox3.Text}', '{DateTime.Now.ToString(timeStringNoformat)}', '{textBox5.Text}')"; //SQL insert command VB.Net
 
             //MessageBox.Show("Some text", "Some title", MessageBoxButtons.OK, MessageBoxIcon.Error);
             try {
@@ -140,7 +139,7 @@ namespace WindowsFormsApp
 
             cnn = getConnection(); // adding connection
             sql = $"Update demotb set UserBasicInfo='{textBox2.Text}', UserStatus='{textBox3.Text}', " +
-                $"UserTime='{DateTime.Now.ToString(timeS)}', UserContent='{textBox5.Text}' where UserID ={textBox1.Text}"; //SQL update command
+                $"UserTime='{DateTime.Now.ToString(timeStringNoformat)}', UserContent='{textBox5.Text}' where UserID ={textBox1.Text}"; //SQL update command
 
             try 
             {
@@ -198,7 +197,7 @@ namespace WindowsFormsApp
 
         private void button5_Click(object sender, EventArgs e)
         {
-            this.Close();
+           this.Close();
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -207,6 +206,11 @@ namespace WindowsFormsApp
         }
 
         private void textBox4_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
 
         }
