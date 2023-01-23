@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeleteFram.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteFram.Designer.cs">
+      <DependentUpon>DeleteFram.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainFrame.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DeleteFram.resx">
+      <DependentUpon>DeleteFram.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainFrame.resx">
       <DependentUpon>MainFrame.cs</DependentUpon>
     </EmbeddedResource>

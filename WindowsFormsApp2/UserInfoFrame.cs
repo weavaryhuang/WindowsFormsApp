@@ -165,22 +165,27 @@ namespace WindowsFormsApp
             SqlDataAdapter adaptor = new SqlDataAdapter();
             string sql;
 
-            cnn = getConnection(); // adding connection
-            sql = $"Delete demotb where UserID={textBox1.Text}"; //SQL delete command
+            DialogResult result = MessageBox.Show("Deleted", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
 
-            try
-            {
-                using (adaptor.DeleteCommand = new SqlCommand(sql, cnn))
+            if (result == DialogResult.OK)
+            { 
+                cnn = getConnection(); // adding connection
+                sql = $"Delete demotb where UserID={textBox1.Text}"; //SQL delete command
+
+                try
                 {
-                    cnn.Open();
+                    using (adaptor.DeleteCommand = new SqlCommand(sql, cnn))
+                    {
+                        cnn.Open();
 
-                    adaptor.DeleteCommand.ExecuteNonQuery();
-                    adaptor.Dispose();
+                        adaptor.DeleteCommand.ExecuteNonQuery();
+                        adaptor.Dispose();
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Please check SQL syntax", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Please check SQL syntax", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
