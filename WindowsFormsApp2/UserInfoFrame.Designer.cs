@@ -32,9 +32,10 @@ namespace WindowsFormsApp
         {
             this.components = new System.ComponentModel.Container();
             this.Usergroup = new System.Windows.Forms.GroupBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.demotbBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.demodbDataSet = new WindowsFormsApp.DemodbDataSet();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -51,7 +52,7 @@ namespace WindowsFormsApp
             this.demotbTableAdapter1 = new WindowsFormsApp.DemodbDataSetTableAdapters.demotbTableAdapter();
             this.button5 = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.button6 = new System.Windows.Forms.Button();
             this.Usergroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.demotbBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demodbDataSet)).BeginInit();
@@ -78,15 +79,15 @@ namespace WindowsFormsApp
             this.Usergroup.Text = "Usergroup";
             this.Usergroup.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // demotbBindingSource
+            // textBox4
             // 
-            this.demotbBindingSource.DataMember = "demotb";
-            this.demotbBindingSource.DataSource = this.demodbDataSet;
-            // 
-            // demodbDataSet
-            // 
-            this.demodbDataSet.DataSetName = "DemodbDataSet";
-            this.demodbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.textBox4.Enabled = false;
+            this.textBox4.Location = new System.Drawing.Point(204, 193);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(100, 22);
+            this.textBox4.TabIndex = 11;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged_1);
             // 
             // textBox5
             // 
@@ -97,6 +98,16 @@ namespace WindowsFormsApp
             this.textBox5.Size = new System.Drawing.Size(189, 70);
             this.textBox5.TabIndex = 9;
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            // 
+            // demotbBindingSource
+            // 
+            this.demotbBindingSource.DataMember = "demotb";
+            this.demotbBindingSource.DataSource = this.demodbDataSet;
+            // 
+            // demodbDataSet
+            // 
+            this.demodbDataSet.DataSetName = "DemodbDataSet";
+            this.demodbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // textBox3
             // 
@@ -231,21 +242,26 @@ namespace WindowsFormsApp
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // textBox4
+            // button6
             // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(204, 193);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(100, 22);
-            this.textBox4.TabIndex = 11;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged_1);
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.ForeColor = System.Drawing.SystemColors.Control;
+            this.button6.Location = new System.Drawing.Point(552, 12);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(43, 38);
+            this.button6.TabIndex = 0;
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // UserInfoFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(607, 391);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -287,6 +303,7 @@ namespace WindowsFormsApp
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Button button6;
     }
 }
 

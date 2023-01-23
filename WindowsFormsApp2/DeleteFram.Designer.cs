@@ -32,14 +32,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.demotbBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.demodbDataSet = new WindowsFormsApp.DemodbDataSet();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.demodbDataSet = new WindowsFormsApp.DemodbDataSet();
-            this.demotbBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.demotbTableAdapter = new WindowsFormsApp.DemodbDataSetTableAdapters.demotbTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.demodbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demotbBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.demodbDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -73,6 +73,16 @@
             this.textBox1.Size = new System.Drawing.Size(205, 36);
             this.textBox1.TabIndex = 2;
             // 
+            // demotbBindingSource
+            // 
+            this.demotbBindingSource.DataMember = "demotb";
+            this.demotbBindingSource.DataSource = this.demodbDataSet;
+            // 
+            // demodbDataSet
+            // 
+            this.demodbDataSet.DataSetName = "DemodbDataSet";
+            this.demodbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // textBox2
             // 
             this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.demotbBindingSource, "UserBasicInfo", true));
@@ -105,16 +115,6 @@
             this.label3.Text = "Please enter matched ID and Info";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // demodbDataSet
-            // 
-            this.demodbDataSet.DataSetName = "DemodbDataSet";
-            this.demodbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // demotbBindingSource
-            // 
-            this.demotbBindingSource.DataMember = "demotb";
-            this.demotbBindingSource.DataSource = this.demodbDataSet;
-            // 
             // demotbTableAdapter
             // 
             this.demotbTableAdapter.ClearBeforeFill = true;
@@ -134,8 +134,8 @@
             this.Name = "DeleteFram";
             this.Text = "Delete Page";
             this.Load += new System.EventHandler(this.DeleteFram_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.demodbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.demotbBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.demodbDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

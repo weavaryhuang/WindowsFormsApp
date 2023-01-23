@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace WindowsFormsApp
@@ -167,7 +168,8 @@ namespace WindowsFormsApp
             //SqlDataAdapter adaptor = new SqlDataAdapter();
             //string sql;
 
-            DialogResult result = MessageBox.Show("Do you ant to delete User ID?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            DialogResult result = MessageBox.Show("  Do you ant to delete User ID?", "Warning", 
+                MessageBoxButtons.OKCancel, MessageBoxIcon.None);
 
             if (result == DialogResult.OK)
             {                
@@ -205,6 +207,37 @@ namespace WindowsFormsApp
 
         private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            SqlConnection cnn;
+            SqlDataAdapter adaptor = new SqlDataAdapter();
+            string sql = null;
+
+            cnn = getConnection(); // adding connection
+            sql = $"Insert into demotb (UserID,UserBasicInfo,UserStatus,UserTime,UserContent) " +
+                  $"values(1, 'C#', 'L', '{DateTime.Now.ToString(timeStringNoformat)}', 'testing');" +
+                  $"Insert into demotb (UserID,UserBasicInfo,UserStatus,UserTime,UserContent) " +
+                  $"values(2, 'ASP.NET', 'LM', '{DateTime.Now.ToString(timeStringNoformat)+1}', 'testing2');" +
+                  $"Insert into demotb (UserID,UserBasicInfo,UserStatus,UserTime,UserContent) " +
+                  $"values(3, 'VB', 'L', '{DateTime.Now.ToString(timeStringNoformat)+1}', 'testing3');";//SQL insert command VB.Net
+
+            //MessageBox.Show("Some text", "Some title", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            try
+            {
+                using (adaptor.InsertCommand = new SqlCommand(sql, cnn))
+                {
+                    cnn.Open();
+                    adaptor.InsertCommand.ExecuteNonQuery();
+                    adaptor.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+               
+            }
 
         }
     }

@@ -22,7 +22,7 @@ namespace WindowsFormsApp
         private void DeleteFram_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'demodbDataSet.demotb' table. You can move, or remove it, as needed.
-            this.demotbTableAdapter.Fill(this.demodbDataSet.demotb);
+            //this.demotbTableAdapter.Fill(this.demodbDataSet.demotb);
 
         }
 
@@ -33,7 +33,7 @@ namespace WindowsFormsApp
             SqlDataReader dataReader;
             SqlCommand command;
             SqlCommand command2;
-            bool ckeckMatch;
+            bool ckeckMatch, statusCheck = false;
 
             string sql, sql2, findoutspecItem;
             string inputStringIDandInfo = textBox1.Text + "  -  " + textBox2.Text;
@@ -41,7 +41,7 @@ namespace WindowsFormsApp
             
 
             cnn = UserInfoFrame.getConnection(); // adding connection
-            sql = $"DELETE FROM demotb WHERE UserID = {textBox1.Text}"; //SQL delete command
+            sql = $"DELETE FROM demotb WHERE UserID = {textBox1.Text} AND UserBasicInfo = '{textBox2.Text}'"; //SQL delete command
 
             sql2 = "SELECT * FROM demotb Order by UserTime DESC " +
                  "Select UserID, UserBasicInfo, UserStatus, UserTime, UserContent from demotb"; //SQL command
@@ -55,24 +55,37 @@ namespace WindowsFormsApp
                     while (dataReader.Read())
                     {
                         findoutspecItem = dataReader.GetValue(0) + "  -  " + dataReader.GetValue(1);
+
                         ckeckMatch = inputStringIDandInfo.Contains(findoutspecItem);
 
-                        if (ckeckMatch)
+                        if (ckeckMatch == true)
                         {
                             cnn.Close();
+
                             cnn.Open();
                             command2 = new SqlCommand(sql, cnn);
                             command2.ExecuteNonQuery();
+
                             MessageBox.Show("OK");
+                            this.Close();
+
+                            statusCheck = false;
                             break;
                         }
+
                         else if (ckeckMatch == false)
                         {
-                            MessageBox.Show("Not found matched data");
-                            break;
+                            statusCheck = true;
                         }
                     }
-                    dataReader.Close();
+
+                    if (statusCheck == true)
+                    {
+                        MessageBox.Show("Not found matched data");
+                    }
+
+
+                        dataReader.Close();
                     adaptor.Dispose();
                 }
                 
