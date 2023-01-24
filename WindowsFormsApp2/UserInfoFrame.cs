@@ -10,7 +10,7 @@ namespace WindowsFormsApp
     public partial class UserInfoFrame : Form
     {
         string timeString = "yy/MM/dd HH:mm:ss";
-        string timeStringNoformat = "yyMMddHHmmss";
+        string timeStringNoformat = "yyMMddHHmm";
 
 
         public UserInfoFrame()
@@ -39,7 +39,7 @@ namespace WindowsFormsApp
         {
 
             // TODO: This line of code loads data into the 'demodbDataSet.demotb' table. You can move, or remove it, as needed.
-            this.demotbTableAdapter.Fill(this.demodbDataSet.demotb);
+            //this.demotbTableAdapter.Fill(this.demodbDataSet.demotb);
             this.textBox4.Text = DateTime.Now.ToString(timeString);
 
         }
@@ -117,8 +117,8 @@ namespace WindowsFormsApp
             string sql = null;
 
             cnn = getConnection(); // adding connection
-            sql = $"Insert into demotb (UserID,UserBasicInfo,UserStatus,UserTime,UserContent) " +
-                $"values({textBox1.Text}, '{textBox2.Text}', '{textBox3.Text}', '{DateTime.Now.ToString(timeStringNoformat)}', '{textBox5.Text}')"; //SQL insert command VB.Net
+            sql = $"Insert into demotb (UserBasicInfo,UserStatus,UserTime,UserContent) " +
+                $"values('{textBox2.Text}', '{textBox3.Text}', '{DateTime.Now.ToString(timeStringNoformat)}', '{textBox5.Text}')"; //SQL insert command VB.Net
 
             
 

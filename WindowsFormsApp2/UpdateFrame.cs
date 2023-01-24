@@ -22,7 +22,7 @@ namespace WindowsFormsApp
         private void UpdateFrame_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'demodbDataSet.demotb' table. You can move, or remove it, as needed.
-            this.demotbTableAdapter.Fill(this.demodbDataSet.demotb);
+            //this.demotbTableAdapter.Fill(this.demodbDataSet.demotb);
 
         }
 
@@ -34,7 +34,7 @@ namespace WindowsFormsApp
         private void button1_Click(object sender, EventArgs e)
         {
             string timeString = "yy/MM/dd HH:mm:ss";
-            string timeStringNoformat = "yyMMddHHmmss";
+            string timeStringNoformat = "yyMMddHHmm";
             SqlConnection cnn;
             SqlDataAdapter adaptor = new SqlDataAdapter();
             SqlDataReader dataReader;
@@ -150,9 +150,6 @@ namespace WindowsFormsApp
                             textBox5.Enabled = true;
                             button1.Visible = true;  // show confirm button
                             button3.Visible = true;  // show cancel button
-
-
-                            MessageBox.Show("OK");
 
                             statusCheck = false;
                             break; // when check is accepted, break the while loop
