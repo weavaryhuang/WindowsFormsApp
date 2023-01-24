@@ -136,30 +136,7 @@ namespace WindowsFormsApp
 
         private void button_updateValues(object sender, EventArgs e)
         {
-            SqlConnection cnn;
-            SqlDataAdapter adaptor = new SqlDataAdapter();
-            string sql;
-
-            cnn = getConnection(); // adding connection
-            sql = $"Update demotb set UserBasicInfo='{textBox2.Text}', UserStatus='{textBox3.Text}', " +
-                $"UserTime='{DateTime.Now.ToString(timeStringNoformat)}', UserContent='{textBox5.Text}' where UserID ={textBox1.Text}"; //SQL update command
-
-            try 
-            {
-                using (adaptor.UpdateCommand = new SqlCommand(sql, cnn))
-                {
-                    cnn.Open();
-
-                    adaptor.UpdateCommand.ExecuteNonQuery();
-                    adaptor.Dispose();
-                    MessageBox.Show("Success", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Please check SQL syntax", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+            new UpdateFrame().Show();
 
         }
         private void button4_deletValues(object sender, EventArgs e)
@@ -222,7 +199,7 @@ namespace WindowsFormsApp
                   $"Insert into demotb (UserID,UserBasicInfo,UserStatus,UserTime,UserContent) " +
                   $"values(2, 'ASP.NET', 'LM', '{DateTime.Now.ToString(timeStringNoformat)+1}', 'testing2');" +
                   $"Insert into demotb (UserID,UserBasicInfo,UserStatus,UserTime,UserContent) " +
-                  $"values(3, 'VB', 'L', '{DateTime.Now.ToString(timeStringNoformat)+1}', 'testing3');";//SQL insert command VB.Net
+                  $"values(3, 'VB', 'L', '{DateTime.Now.ToString(timeStringNoformat)+2}', 'testing3');";//SQL insert command VB.Net
 
             //MessageBox.Show("Some text", "Some title", MessageBoxButtons.OK, MessageBoxIcon.Error);
             try
