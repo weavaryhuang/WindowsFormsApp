@@ -39,9 +39,8 @@ namespace WindowsFormsApp
         {
 
             // TODO: This line of code loads data into the 'demodbDataSet.demotb' table. You can move, or remove it, as needed.
-            //this.demotbTableAdapter.Fill(this.demodbDataSet.demotb);
+            this.demotbTableAdapter.Fill(this.demodbDataSet.demotb);
             this.textBox4.Text = DateTime.Now.ToString(timeString);
-
 
         }
 
@@ -85,7 +84,7 @@ namespace WindowsFormsApp
 
 
             cnn = getConnection(); // adding connection
-            sql = "SELECT * FROM demotb Order by UserTime DESC " +
+            sql = "SELECT * FROM demotb Order by UserID ASC " +
                  "Select UserID, UserBasicInfo, UserStatus, UserTime, UserContent from demotb"; //SQL command
 
             using (command = new SqlCommand(sql, cnn))
@@ -101,6 +100,8 @@ namespace WindowsFormsApp
                         dataReader.GetValue(2) + "  -  " +
                         dataReader.GetValue(3) + "  -  " +
                         dataReader.GetValue(4) + "\n\n";      //Read table
+
+                    
                 }
                 dataReader.Close();
                 return Output;
@@ -118,6 +119,8 @@ namespace WindowsFormsApp
             cnn = getConnection(); // adding connection
             sql = $"Insert into demotb (UserID,UserBasicInfo,UserStatus,UserTime,UserContent) " +
                 $"values({textBox1.Text}, '{textBox2.Text}', '{textBox3.Text}', '{DateTime.Now.ToString(timeStringNoformat)}', '{textBox5.Text}')"; //SQL insert command VB.Net
+
+            
 
             //MessageBox.Show("Some text", "Some title", MessageBoxButtons.OK, MessageBoxIcon.Error);
             try {
@@ -194,12 +197,12 @@ namespace WindowsFormsApp
             string sql = null;
 
             cnn = getConnection(); // adding connection
-            sql = $"Insert into demotb (UserID,UserBasicInfo,UserStatus,UserTime,UserContent) " +
-                  $"values(1, 'C#', 'L', '{DateTime.Now.ToString(timeStringNoformat)}', 'testing');" +
-                  $"Insert into demotb (UserID,UserBasicInfo,UserStatus,UserTime,UserContent) " +
-                  $"values(2, 'ASP.NET', 'LM', '{DateTime.Now.ToString(timeStringNoformat)+1}', 'testing2');" +
-                  $"Insert into demotb (UserID,UserBasicInfo,UserStatus,UserTime,UserContent) " +
-                  $"values(3, 'VB', 'L', '{DateTime.Now.ToString(timeStringNoformat)+2}', 'testing3');";//SQL insert command VB.Net
+            sql = $"Insert into demotb (UserBasicInfo,UserStatus,UserTime,UserContent) " +
+                  $"values('C#', 'L', '{DateTime.Now.ToString(timeStringNoformat)}', 'testing');" +
+                  $"Insert into demotb (UserBasicInfo,UserStatus,UserTime,UserContent) " +
+                  $"values('ASP.NET', 'LM', '{DateTime.Now.ToString(timeStringNoformat)+1}', 'testing2');" +
+                  $"Insert into demotb (UserBasicInfo,UserStatus,UserTime,UserContent) " +
+                  $"values('VB', 'L', '{DateTime.Now.ToString(timeStringNoformat)+2}', 'testing3');";//SQL insert command VB.Net
 
             //MessageBox.Show("Some text", "Some title", MessageBoxButtons.OK, MessageBoxIcon.Error);
             try
@@ -215,6 +218,16 @@ namespace WindowsFormsApp
             {
                
             }
+
+        }
+
+        private void demotbBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
+        {
 
         }
     }

@@ -99,8 +99,6 @@ namespace WindowsFormsApp
 
         public void button2_Click(object sender, EventArgs e)
         {
-            string timeString = "yy/MM/dd HH:mm:ss";
-            string timeStringNoformat = "yyMMddHHmmss";
             SqlConnection cnn;
             SqlDataAdapter adaptor = new SqlDataAdapter();
             SqlDataReader dataReader;
@@ -113,7 +111,7 @@ namespace WindowsFormsApp
             string outputLineCheck = "";
 
             string inputStringIDandInfo1 = textBox1.Text;
-            string inputStringIDandInfo2 = textBox1.Text + "  -  " + textBox6.Text;
+            //string inputStringIDandInfo2 = textBox1.Text + "  -  " + textBox6.Text; // User ID - User Time
 
             cnn = UserInfoFrame.getConnection(); // adding connection
 
@@ -129,11 +127,11 @@ namespace WindowsFormsApp
 
                     while (dataReader.Read())
                     {
-                        findoutspecItem1 = dataReader.GetValue(0).ToString();
-                        findoutspecItem2 = dataReader.GetValue(3).ToString();
+                        findoutspecItem1 = dataReader.GetValue(0).ToString(); // user ID
+                        findoutspecItem2 = dataReader.GetValue(3).ToString(); // User time
 
-                        checkMatch1 = inputStringIDandInfo1.Contains(findoutspecItem1);
-                        checkMatch2 = inputStringIDandInfo2.Contains(findoutspecItem2);
+                        checkMatch1 = findoutspecItem1.Contains(inputStringIDandInfo1); // check string wheter include
+                        //checkMatch2 = inputStringIDandInfo2.Contains(findoutspecItem2);
 
                         outputLineCheck += count.ToString() + "  -  " +
                             dataReader.GetValue(0) + "  -  " +
@@ -142,29 +140,29 @@ namespace WindowsFormsApp
                             dataReader.GetValue(3) + "  -  " +
                             dataReader.GetValue(4) + "\n\n";      //Read table
                         
-                        MessageBox.Show(outputLineCheck);
 
-                        if (checkMatch1 == true && checkMatch2 == true)
+                        if (checkMatch1 == true) // double check what the User column want to update
                         {
                             cnn.Close();
 
-                            textBox2.Enabled = true;
+                            textBox2.Enabled = true;  // make an authorition when check is availible
                             textBox3.Enabled = true;
                             textBox5.Enabled = true;
-                            button1.Visible = true;
+                            button1.Visible = true;  // show confirm button
+                            button3.Visible = true;  // show cancel button
 
 
                             MessageBox.Show("OK");
 
                             statusCheck = false;
-                            break;
+                            break; // when check is accepted, break the while loop
                         }
 
                         else
                         {
                             statusCheck = true;
                         }
-                        count++;
+                        count++; //Line counter
                     }
 
                     if (statusCheck == true)
@@ -182,6 +180,11 @@ namespace WindowsFormsApp
             {
                 MessageBox.Show("Please check SQL syntax", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

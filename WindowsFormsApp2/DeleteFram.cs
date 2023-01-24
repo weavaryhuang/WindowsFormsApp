@@ -36,12 +36,14 @@ namespace WindowsFormsApp
             bool ckeckMatch, statusCheck = false;
 
             string sql, sql2, findoutspecItem;
-            string inputStringIDandInfo = textBox1.Text + "  -  " + textBox2.Text;
+            string inputStringIDandInfo = textBox1.Text;
 
             
 
             cnn = UserInfoFrame.getConnection(); // adding connection
-            sql = $"DELETE FROM demotb WHERE UserID = {textBox1.Text} AND UserBasicInfo = '{textBox2.Text}'"; //SQL delete command
+
+            sql = $"DELETE FROM demotb WHERE UserID = {textBox1.Text}";
+            //sql = $"DELETE FROM demotb WHERE UserID = {textBox1.Text} AND UserBasicInfo = '{textBox2.Text}'"; //SQL delete command
 
             sql2 = "SELECT * FROM demotb Order by UserTime DESC " +
                  "Select UserID, UserBasicInfo, UserStatus, UserTime, UserContent from demotb"; //SQL command
@@ -54,9 +56,9 @@ namespace WindowsFormsApp
                     dataReader = command.ExecuteReader(); //Make table can be readable
                     while (dataReader.Read())
                     {
-                        findoutspecItem = dataReader.GetValue(0) + "  -  " + dataReader.GetValue(1);
+                        findoutspecItem = dataReader.GetValue(0).ToString();
 
-                        ckeckMatch = inputStringIDandInfo.Contains(findoutspecItem);
+                        ckeckMatch = findoutspecItem.Contains(inputStringIDandInfo);
 
                         if (ckeckMatch == true)
                         {
@@ -85,10 +87,10 @@ namespace WindowsFormsApp
                     }
 
 
-                        dataReader.Close();
+                    dataReader.Close();
                     adaptor.Dispose();
                 }
-                
+
             }
 
             catch (Exception ex)
@@ -108,6 +110,11 @@ namespace WindowsFormsApp
             //    }
             //}
 
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

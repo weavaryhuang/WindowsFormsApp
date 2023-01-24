@@ -33,9 +33,8 @@ namespace WindowsFormsApp
             this.components = new System.ComponentModel.Container();
             this.Usergroup = new System.Windows.Forms.GroupBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.demotbBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.demodbDataSet = new WindowsFormsApp.DemodbDataSet();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -44,6 +43,7 @@ namespace WindowsFormsApp
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.demotbBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.demotbTableAdapter = new WindowsFormsApp.DemodbDataSetTableAdapters.demotbTableAdapter();
             this.button2 = new System.Windows.Forms.Button();
@@ -54,8 +54,8 @@ namespace WindowsFormsApp
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.button6 = new System.Windows.Forms.Button();
             this.Usergroup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.demotbBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demodbDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.demotbBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,6 +81,7 @@ namespace WindowsFormsApp
             // 
             // textBox4
             // 
+            this.textBox4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.demodbDataSet, "demotb.UserTime", true));
             this.textBox4.Enabled = false;
             this.textBox4.Location = new System.Drawing.Point(204, 193);
             this.textBox4.Name = "textBox4";
@@ -89,9 +90,14 @@ namespace WindowsFormsApp
             this.textBox4.TabIndex = 11;
             this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged_1);
             // 
+            // demodbDataSet
+            // 
+            this.demodbDataSet.DataSetName = "DemodbDataSet";
+            this.demodbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // textBox5
             // 
-            this.textBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.demotbBindingSource, "UserContent", true));
+            this.textBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.demodbDataSet, "demotb.UserContent", true));
             this.textBox5.Location = new System.Drawing.Point(204, 242);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
@@ -99,19 +105,9 @@ namespace WindowsFormsApp
             this.textBox5.TabIndex = 9;
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
-            // demotbBindingSource
-            // 
-            this.demotbBindingSource.DataMember = "demotb";
-            this.demotbBindingSource.DataSource = this.demodbDataSet;
-            // 
-            // demodbDataSet
-            // 
-            this.demodbDataSet.DataSetName = "DemodbDataSet";
-            this.demodbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // textBox3
             // 
-            this.textBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.demotbBindingSource, "UserStatus", true));
+            this.textBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.demodbDataSet, "demotb.UserStatus", true));
             this.textBox3.Location = new System.Drawing.Point(204, 145);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 22);
@@ -148,7 +144,7 @@ namespace WindowsFormsApp
             // 
             // textBox2
             // 
-            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.demotbBindingSource, "UserBasicInfo", true));
+            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.demodbDataSet, "demotb.UserBasicInfo", true));
             this.textBox2.Location = new System.Drawing.Point(204, 93);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 22);
@@ -158,7 +154,8 @@ namespace WindowsFormsApp
             // textBox1
             // 
             this.textBox1.AccessibleName = "";
-            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.demotbBindingSource, "UserID", true));
+            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.demodbDataSet, "demotb.UserID", true));
+            this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(204, 37);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 22);
@@ -183,6 +180,12 @@ namespace WindowsFormsApp
             this.label1.TabIndex = 0;
             this.label1.Text = "UserID";
             this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // demotbBindingSource
+            // 
+            this.demotbBindingSource.DataMember = "demotb";
+            this.demotbBindingSource.DataSource = this.demodbDataSet;
+            this.demotbBindingSource.CurrentChanged += new System.EventHandler(this.demotbBindingSource_CurrentChanged);
             // 
             // button1
             // 
@@ -242,6 +245,10 @@ namespace WindowsFormsApp
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // bindingSource1
+            // 
+            this.bindingSource1.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
+            // 
             // button6
             // 
             this.button6.FlatAppearance.BorderSize = 0;
@@ -273,8 +280,8 @@ namespace WindowsFormsApp
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Usergroup.ResumeLayout(false);
             this.Usergroup.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.demotbBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.demodbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.demotbBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
