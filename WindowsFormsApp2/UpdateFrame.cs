@@ -41,8 +41,7 @@ namespace WindowsFormsApp
             SqlCommand command;
             bool ckeckMatch, statusCheck = false;
 
-            string sql, sql2, findoutspecItem;
-            string inputStringIDandInfo = textBox1.Text + "  -  " + textBox6.Text;
+            string sql;
 
             //SqlConnection cnn;
             //SqlDataAdapter adaptor = new SqlDataAdapter();
@@ -111,6 +110,7 @@ namespace WindowsFormsApp
             int count = 0;
 
             string sql, findoutspecItem1, findoutspecItem2;
+            string outputLineCheck = "";
 
             string inputStringIDandInfo1 = textBox1.Text;
             string inputStringIDandInfo2 = textBox1.Text + "  -  " + textBox6.Text;
@@ -135,6 +135,15 @@ namespace WindowsFormsApp
                         checkMatch1 = inputStringIDandInfo1.Contains(findoutspecItem1);
                         checkMatch2 = inputStringIDandInfo2.Contains(findoutspecItem2);
 
+                        outputLineCheck += count.ToString() + "  -  " +
+                            dataReader.GetValue(0) + "  -  " +
+                            dataReader.GetValue(1) + "  -  " +
+                            dataReader.GetValue(2) + "  -  " +
+                            dataReader.GetValue(3) + "  -  " +
+                            dataReader.GetValue(4) + "\n\n";      //Read table
+                        
+                        MessageBox.Show(outputLineCheck);
+
                         if (checkMatch1 == true && checkMatch2 == true)
                         {
                             cnn.Close();
@@ -142,12 +151,10 @@ namespace WindowsFormsApp
                             textBox2.Enabled = true;
                             textBox3.Enabled = true;
                             textBox5.Enabled = true;
-
                             button1.Visible = true;
 
 
                             MessageBox.Show("OK");
-
 
                             statusCheck = false;
                             break;
@@ -157,7 +164,6 @@ namespace WindowsFormsApp
                         {
                             statusCheck = true;
                         }
-
                         count++;
                     }
 
@@ -165,7 +171,6 @@ namespace WindowsFormsApp
                     {
                         MessageBox.Show("Not found matched data");
                     }
-
 
                     dataReader.Close();
                     adaptor.Dispose();

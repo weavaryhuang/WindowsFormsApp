@@ -71,6 +71,7 @@ namespace WindowsFormsApp
             this.ResumeLayout(false);
 
         }
+
     }
 
     public partial class MainFrame : Form
