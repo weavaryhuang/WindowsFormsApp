@@ -52,7 +52,6 @@ namespace WindowsFormsApp
             this.demotbTableAdapter1 = new WindowsFormsApp.DemodbDataSetTableAdapters.demotbTableAdapter();
             this.button5 = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.button6 = new System.Windows.Forms.Button();
             this.Usergroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.demodbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demotbBindingSource)).BeginInit();
@@ -158,6 +157,7 @@ namespace WindowsFormsApp
             this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(204, 37);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(100, 22);
             this.textBox1.TabIndex = 2;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -167,9 +167,9 @@ namespace WindowsFormsApp
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(26, 96);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 12);
+            this.label2.Size = new System.Drawing.Size(56, 12);
             this.label2.TabIndex = 1;
-            this.label2.Text = "User Basic Information";
+            this.label2.Text = "User Name";
             // 
             // label1
             // 
@@ -249,26 +249,11 @@ namespace WindowsFormsApp
             // 
             this.bindingSource1.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
             // 
-            // button6
-            // 
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.ForeColor = System.Drawing.SystemColors.Control;
-            this.button6.Location = new System.Drawing.Point(552, 12);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(43, 38);
-            this.button6.TabIndex = 0;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
             // UserInfoFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(607, 391);
-            this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -310,7 +295,6 @@ namespace WindowsFormsApp
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button6;
     }
 }
 

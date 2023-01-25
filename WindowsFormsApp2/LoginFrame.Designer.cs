@@ -90,6 +90,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(162, 27);
             this.textBox2.TabIndex = 3;
+            this.textBox2.UseSystemPasswordChar = true;
             // 
             // button1
             // 
@@ -111,6 +112,7 @@
             this.button2.TabIndex = 5;
             this.button2.Text = "Create an account";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // membersysTableAdapter
             // 

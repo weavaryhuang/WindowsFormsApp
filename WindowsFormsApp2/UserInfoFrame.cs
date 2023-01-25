@@ -108,7 +108,11 @@ namespace WindowsFormsApp
             }
         }
 
-        private void button_showResult(object sender, EventArgs e) => MessageBox.Show(getShowlist()); // using method to show user list
+        private void button_showResult(object sender, EventArgs e)
+        {
+            if (LoginFrame.highestPermissions == 1)
+                MessageBox.Show(getShowlist()); // using method to show user list
+        } 
 
         private void button_insertValues(object sender, EventArgs e)
         {
@@ -148,15 +152,16 @@ namespace WindowsFormsApp
             //SqlDataAdapter adaptor = new SqlDataAdapter();
             //string sql;
 
-            DialogResult result = MessageBox.Show("  Do you ant to delete User ID?", "Warning", 
+            if (LoginFrame.highestPermissions == 1)
+            {
+                DialogResult result = MessageBox.Show("  Do you ant to delete User ID?", "Warning",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.None);
-
-            if (result == DialogResult.OK)
-            {                
-                new DeleteFram().Show();         
+                if (result == DialogResult.OK)
+                {
+                    new DeleteFram().Show();
+                }
             }
 
-            
         }
 
 
@@ -192,32 +197,6 @@ namespace WindowsFormsApp
 
         private void button6_Click(object sender, EventArgs e)
         {
-            SqlConnection cnn;
-            SqlDataAdapter adaptor = new SqlDataAdapter();
-            string sql = null;
-
-            cnn = getConnection(); // adding connection
-            sql = $"Insert into demotb (UserBasicInfo,UserStatus,UserTime,UserContent) " +
-                  $"values('C#', 'L', '{DateTime.Now.ToString(timeStringNoformat)}', 'testing');" +
-                  $"Insert into demotb (UserBasicInfo,UserStatus,UserTime,UserContent) " +
-                  $"values('ASP.NET', 'LM', '{DateTime.Now.ToString(timeStringNoformat)+1}', 'testing2');" +
-                  $"Insert into demotb (UserBasicInfo,UserStatus,UserTime,UserContent) " +
-                  $"values('VB', 'L', '{DateTime.Now.ToString(timeStringNoformat)+2}', 'testing3');";//SQL insert command VB.Net
-
-            //MessageBox.Show("Some text", "Some title", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            try
-            {
-                using (adaptor.InsertCommand = new SqlCommand(sql, cnn))
-                {
-                    cnn.Open();
-                    adaptor.InsertCommand.ExecuteNonQuery();
-                    adaptor.Dispose();
-                }
-            }
-            catch (Exception ex)
-            {
-               
-            }
 
         }
 
