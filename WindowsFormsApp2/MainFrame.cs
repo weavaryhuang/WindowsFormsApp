@@ -8,6 +8,8 @@ using System.Windows;
 using System.Data.SqlClient;
 using System.Security.Cryptography.X509Certificates;
 using System.ComponentModel;
+using System.IO;
+using System.Diagnostics;
 
 namespace WindowsFormsApp
 {
@@ -19,6 +21,7 @@ namespace WindowsFormsApp
         private Button button5;
         private Label label1;
         private Button button6;
+        private Button button7;
         private Button button3;
 
         public MainFrame()
@@ -34,6 +37,7 @@ namespace WindowsFormsApp
             this.button5 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -114,9 +118,20 @@ namespace WindowsFormsApp
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(12, 372);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(58, 23);
+            this.button7.TabIndex = 7;
+            this.button7.Text = "test";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // MainFrame
             // 
             this.ClientSize = new System.Drawing.Size(497, 408);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button5);
@@ -147,6 +162,19 @@ namespace WindowsFormsApp
         private void button6_Click(object sender, EventArgs e)
         {
             LoginFrame.highestPermissions = 1;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string filename = @"C:\Users\user\Desktop\testing.txt";
+            string web = "https://www.youtube.om/";
+
+            try
+            {
+                System.Diagnostics.Process.Start(web);
+            }
+            catch (Exception ex) { }
+         
         }
     }
 
